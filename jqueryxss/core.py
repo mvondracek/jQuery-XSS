@@ -30,8 +30,8 @@ def is_jquery_selector_expression(node) -> bool:
 def analyse(source_code: str) -> Dict[Tuple[int, int], str]:
     """
     Analyse JavaScript code for a potential jQuery XSS.
-    :param source_code: obfuscated code in Array Ref obfuscation format.
-    :return: deobfuscated code.
+    :param source_code: string with JavaScript code for analysis
+    :return: detected unsafe uses of jQuery methods
 
     :raises InvalidInput: on syntax error in provided JavaScript source code
     """
