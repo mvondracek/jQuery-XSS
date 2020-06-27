@@ -36,9 +36,9 @@ and report unsafe use of jQuery methods as follows:
 
 ~~~shell script
 $ ./jqueryxsscli.py --input ./examples/vulnerable.js
-unsafe method call (3,1)=`$("#foo1").html(xss)`
-unsafe method call (4,1)=`$('h1')['html'](xss)`
-unsafe method call (9,1)=`$("#foo2").before(xss)`
+unsafe jQuery method call (3, 1)=`$("#foo1").html(xss)`
+unsafe jQuery method call (4, 1)=`$('h1')['html'](xss)`
+unsafe jQuery method call (9, 1)=`$("#foo2").before(xss)`
 ~~~
 
 For more short examples, please see implemented unit tests ([`/tests`](/tests)).

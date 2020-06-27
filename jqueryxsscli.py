@@ -58,7 +58,10 @@ def main(argv: Optional[Sequence[str]]) -> ExitCode:
         LOGGER.debug('Config parsed from args.')
 
         # raises InvalidInput: on syntax error in provided JavaScript source code
-        analyse_file(config.input)
+        detections = analyse_file(config.input)
+        for detection in detections.values():
+            print('unsafe jQuery method call {}=`{}`'.format(
+                detection.position, detection.method_call))
     return ExitCode.EX_OK
 
 

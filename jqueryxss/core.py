@@ -17,6 +17,26 @@ class InvalidInput(JQueryXssError):
     pass
 
 
+Position = Tuple[int, int]
+
+
+class Detection:
+    def __init__(self, line: int, column: int, method_call: str) -> None:
+        """
+        Detection of unsafe method call in source code.
+        :param line:
+        :param column:
+        :param method_call:
+        """
+        self.line: int = line
+        self.column: int = column
+        self.method_call: str = method_call
+
+    @property
+    def position(self) -> Position:
+        return self.line, self.column
+
+
 def is_jquery_selector_expression(node) -> bool:
     """
     Check whether provided AST `node` is jQuery selector expression (`$("#foo")`).
@@ -27,7 +47,7 @@ def is_jquery_selector_expression(node) -> bool:
         and node.identifier.value == '$'
 
 
-def analyse(source_code: str) -> Dict[Tuple[int, int], str]:
+def analyse(source_code: str) -> Dict[Position, Detection]:
     """
     Analyse JavaScript code for a potential jQuery XSS.
     :param source_code: string with JavaScript code for analysis
@@ -38,7 +58,7 @@ def analyse(source_code: str) -> Dict[Tuple[int, int], str]:
     unsafe_methods = ['html', 'prepend', 'prependTo', 'append', 'appendTo',
                       'before', 'after', 'insertBefore', 'insertAfter',
                       'wrap', 'wrapInner', 'wrapAll']
-    detections = {}
+    detections: Dict[Tuple[int, int], Detection] = {}
     parser = Parser()
     try:
         tree = parser.parse(source_code, tracking=True)
@@ -62,17 +82,18 @@ def analyse(source_code: str) -> Dict[Tuple[int, int], str]:
                 hit = True
             # conditions above are separated for better readability
             if hit:
-                detections[(node.lex_line, node.lex_column)] = node.to_ecma()
-                print('unsafe method call ({},{})=`{}`'.format(
-                    node.lex_line, node.lex_column, node.to_ecma()))
+                detection = Detection(node.lex_line, node.lex_column, node.to_ecma())
+                detections[detection.position] = detection
+                LOGGER.debug('unsafe method call {}=`{}`'.format(
+                    detection.position, detection.method_call))
     return detections
 
 
-def analyse_file(input_: TextIO) -> None:
+def analyse_file(input_: TextIO) -> Dict[Position, Detection]:
     """
     Analyse JavaScript code in input file for a potential jQuery XSS.
     :param input_: Input text file with JavaScript code.
 
     :raises InvalidInput: on syntax error in provided JavaScript source code
     """
-    analyse(input_.read())
+    return analyse(input_.read())
