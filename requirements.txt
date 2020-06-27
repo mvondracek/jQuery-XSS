@@ -1,1 +1,3 @@
+coala
+dependency_management
 git+https://github.com/mvondracek/slimit.git#egg=slimit

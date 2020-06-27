@@ -49,6 +49,45 @@ For more short examples, please see implemented unit tests ([`/tests`](/tests)).
 $ ./jqueryxsscli.py --help
 ~~~
 
+# Coala Bear
+
+This analyser is also available as a plugin for [Coala static analysis system](https://coala.io/).
+Plugins for Coala are called [bears](https://github.com/coala/coala-bears)
+and this *jQuery XSS Static Analyser* is released as `JSjQueryXssUnsafeBear`.
+
+You can run Coala integrated in your favourite IDE or from CLI as follows:
+~~~shell script
+$ coala -I --flush-cache -f examples/vulnerable.js -d . -b JSjQueryXssUnsafeBear
+Executing section cli...
+
+examples\vulnerable.js
+|   3| $("#foo1").html(xss);·//·vulnerable
+|    | [NORMAL] JSjQueryXssUnsafeBear:
+|    | unsafe jQuery method call `$("#foo1").html(xss)`
+|    | *0: Do nothing
+|    |  1: Open file(s)
+|    |  2: Add ignore comment
+|    | Enter number (Ctrl-Z to exit): 0
+
+examples\vulnerable.js
+|   4| $(
+|    | [NORMAL] JSjQueryXssUnsafeBear:
+|    | unsafe jQuery method call `$('h1')['html'](xss)`
+|    | *0: Do nothing
+|    |  1: Open file(s)
+|    |  2: Add ignore comment
+|    | Enter number (Ctrl-Z to exit): 0
+
+examples\vulnerable.js
+|   9| $("#foo2").before(xss);·//·vulnerable,·`prepend`,·`after`,·`appendTo`,·...
+|    | [NORMAL] JSjQueryXssUnsafeBear:
+|    | unsafe jQuery method call `$("#foo2").before(xss)`
+|    | *0: Do nothing
+|    |  1: Open file(s)
+|    |  2: Add ignore comment
+|    | Enter number (Ctrl-Z to exit): 0
+~~~
+
 ## Links
 
 * OWASP Foundation. *Cheat Sheet Series: DOM based XSS Prevention Cheat Sheet*. 2020.
