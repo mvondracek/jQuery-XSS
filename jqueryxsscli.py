@@ -60,8 +60,11 @@ def main(argv: Optional[Sequence[str]]) -> ExitCode:
         # raises InvalidInput: on syntax error in provided JavaScript source code
         detections = analyse_file(config.input)
         for detection in detections.values():
-            print('unsafe jQuery method call {}=`{}`'.format(
-                detection.position, detection.method_call))
+            if config.locations_only:
+                print('{}:{}'.format(detection.line, detection.column))
+            else:
+                print('unsafe jQuery method call ({}:{})=`{}`'.format(
+                    detection.line, detection.column, detection.method_call))
     return ExitCode.EX_OK
 
 

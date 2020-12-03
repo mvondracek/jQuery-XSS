@@ -17,9 +17,10 @@ class Config:
                            }
     LOGGING_LEVEL_DEFAULT = 'info'
 
-    def __init__(self, logging_level: Optional[int], input_: TextIO):
+    def __init__(self, logging_level: Optional[int], input_: TextIO, locations_only: bool):
         self.logging_level: Optional[int] = logging_level
         self.input: TextIO = input_
+        self.locations_only: bool = locations_only
 
     def close(self):
         self.input.close()
@@ -49,6 +50,11 @@ class Config:
                             choices=cls.LOGGING_LEVELS_DICT,
                             help='logging verbosity level (default: %(default)s)'
                             )
+        parser.add_argument('-l', '--locations-only',
+                            action='store_true',
+                            default=False,
+                            help='output only locations of detected unsafe jQuery method calls',
+                            )
         parser.add_argument('--version', action='version', version='%(prog)s {}'.format(__version__))
         return parser
 
@@ -67,4 +73,4 @@ class Config:
         # name to value conversion as noted in `self.init_parser`
         logging_level = cls.LOGGING_LEVELS_DICT[parsed_args.verbosity]
 
-        return cls(logging_level, parsed_args.input)
+        return cls(logging_level, parsed_args.input, parsed_args.locations_only)
