@@ -21,27 +21,29 @@ which are vulnerable to XSS attack.
 
 For example, the analyser can parse following JavaScript code:
 ~~~js
-var xss = '<script>alert("xss")</script>';
+// vulnerable.html?foo=<script>alert("xss attack")</script>
+var xss = new URLSearchParams(window.location.search).get('foo');
 // ----------------------------------------------------------------------------
-$("#foo1").html(xss); // vulnerable
-$(
-'h1')
-[
-'html']
-(xss); // vulnerable
-$("#foo2").before(xss); // vulnerable, `prepend`, `after`, `appendTo`, ...
-var text = 'context aware $("#foo1").html(xss);';  // safe
-$("#foo3").html();  // safe
-$("#foo4").bar(baz); // safe
+$( document ).ready(function() {
+    $("#foo1").html(xss); // vulnerable
+    $(
+    'h2')
+    [
+    'html']
+    (xss); // vulnerable
+    $("#foo2").before(xss); // vulnerable, `prepend`, `after`, `appendTo`, ...
+    var text = 'context aware $("#foo1").html(xss);';  // safe
+    $("#foo3").html();  // safe
+});
 ~~~
 
 and report unsafe use of jQuery methods as follows:
 
 ~~~shell script
 $ ./jqueryxsscli.py --input ./examples/vulnerable.js
-unsafe jQuery method call (3, 1)=`$("#foo1").html(xss)`
-unsafe jQuery method call (4, 1)=`$('h1')['html'](xss)`
-unsafe jQuery method call (9, 1)=`$("#foo2").before(xss)`
+unsafe jQuery method call (5, 5)=`$("#foo1").html(xss)`
+unsafe jQuery method call (6, 5)=`$('h2')['html'](xss)`
+unsafe jQuery method call (11, 5)=`$("#foo2").before(xss)`
 ~~~
 
 For more short examples, please see implemented unit tests ([`/tests`](/tests)).
@@ -64,7 +66,7 @@ $ coala -I --flush-cache -f examples/vulnerable.js -d . -b JSjQueryXssUnsafeBear
 Executing section cli...
 
 examples\vulnerable.js
-|   3| $("#foo1").html(xss);·//·vulnerable
+|   5| ····$("#foo1").html(xss);·//·vulnerable
 |    | [NORMAL] JSjQueryXssUnsafeBear:
 |    | unsafe jQuery method call `$("#foo1").html(xss)`
 |    | *0: Do nothing
@@ -73,16 +75,16 @@ examples\vulnerable.js
 |    | Enter number (Ctrl-Z to exit): 0
 
 examples\vulnerable.js
-|   4| $(
+|   6| ····$(
 |    | [NORMAL] JSjQueryXssUnsafeBear:
-|    | unsafe jQuery method call `$('h1')['html'](xss)`
+|    | unsafe jQuery method call `$('h2')['html'](xss)`
 |    | *0: Do nothing
 |    |  1: Open file(s)
 |    |  2: Add ignore comment
 |    | Enter number (Ctrl-Z to exit): 0
 
 examples\vulnerable.js
-|   9| $("#foo2").before(xss);·//·vulnerable,·`prepend`,·`after`,·`appendTo`,·...
+|  11| ····$("#foo2").before(xss);·//·vulnerable,·`prepend`,·`after`,·`appendTo`,·...
 |    | [NORMAL] JSjQueryXssUnsafeBear:
 |    | unsafe jQuery method call `$("#foo2").before(xss)`
 |    | *0: Do nothing
