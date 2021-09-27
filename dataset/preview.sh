@@ -4,7 +4,7 @@ cd ./out/ || exit 1
 for file in *.gen.js; do
   read -n 1 -s -r -p "Press any key to continue"; echo "";
   echo "$file";
-  pygmentize -g -f 16m "$file" | cat -n
+  python -m pygments -g -f 16m "$file" | cat -n
   echo "out:"; cat -n "${file%.gen.js}.out"
   echo "jqxss:"; cat -n "${file%.gen.js}.jqxss"
   echo "eslint:"; cat -n "${file%.gen.js}.eslintp"
