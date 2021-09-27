@@ -57,6 +57,8 @@ for file in *.gen.js; do
 done
 
 echo "compare expected output with eslintp and jqxss"
+echo "" > eslintp.diff.txt
+echo "" > jqxss.diff.txt
 for file in *.gen.js; do
   sed -e "s/^${file}:\([0-9]\+\):\([0-9]\+\):.*$/\1:\2/" "${file%.gen.js}.eslintp" | diff --strip-trailing-cr -q -s - "${file%.gen.js}.out" >> eslintp.diff.txt
   diff --strip-trailing-cr -q -s "${file%.gen.js}.jqxss" "${file%.gen.js}.out" >> jqxss.diff.txt
@@ -67,3 +69,4 @@ grep "" ./*.out > out.cat.txt
 grep "" ./*.eslintp > eslintp.cat.txt
 grep "" ./*.jqxss > jqxss.cat.txt
 
+echo "finished"
