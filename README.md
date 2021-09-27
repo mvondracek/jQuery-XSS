@@ -1,4 +1,4 @@
-# jQuery XSS Static Analyser 
+# jQuery XSS Static Analyser
 
 [![Python version](https://img.shields.io/badge/Python-3-blue.svg?style=flat-square)](https://www.python.org/)
 ![Python package](https://github.com/mvondracek/jQuery-XSS/workflows/Python%20package/badge.svg)
@@ -54,7 +54,7 @@ For more short examples, please see implemented unit tests ([`/tests`](/tests)).
 $ ./jqueryxsscli.py --help
 ~~~
 
-# Coala Bear
+## Coala Bear
 
 This analyser is also available as a plugin for [Coala static analysis system](https://coala.io/).
 Plugins for Coala are called [bears](https://github.com/coala/coala-bears)
