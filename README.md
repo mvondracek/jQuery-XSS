@@ -93,6 +93,11 @@ examples\vulnerable.js
 |    | Enter number (Ctrl-Z to exit): 0
 ~~~
 
+## Publication
+
+This software was developed during research on ***TBA***.
+Please see the paper for more details.
+
 ## Links
 
 * OWASP Foundation. *Cheat Sheet Series: DOM based XSS Prevention Cheat Sheet*. 2020.
