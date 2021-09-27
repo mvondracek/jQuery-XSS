@@ -1,7 +1,7 @@
 {
   "dependencies": {},
   "devDependencies": {
-    "eslint": "^7.14.0",
+    "eslint": "^7.32.0",
     "eslint-plugin-jquery-unsafe": "^0.1.0"
   }
 }
