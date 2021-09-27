@@ -1,2 +1,2 @@
 For more short examples, please see implemented unit tests ([`/tests`](/tests))
-and [`dataset`](/dataset).
+and [our dataset of unsafe jQuery method calls](/dataset).

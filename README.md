@@ -46,7 +46,8 @@ unsafe jQuery method call (6, 5)=`$('h2')['html'](xss)`
 unsafe jQuery method call (11, 5)=`$("#foo2").before(xss)`
 ~~~
 
-For more short examples, please see implemented unit tests ([`/tests`](/tests)).
+For more short examples, please see implemented unit tests ([`/tests`](/tests))
+and [our dataset of unsafe jQuery method calls](/dataset).
 
 ## Help
 
@@ -92,6 +93,11 @@ examples\vulnerable.js
 |    |  2: Add ignore comment
 |    | Enter number (Ctrl-Z to exit): 0
 ~~~
+
+## Dataset
+
+To evaluate abilities of our analyser and to compare it with other tools,
+we created [our dataset of unsafe jQuery method calls](/dataset).
 
 ## Publication
 
