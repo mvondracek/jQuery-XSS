@@ -119,6 +119,11 @@ Please see the paper for more details and use following citation.
 }
 ~~~
 
+## License
+
+- [MIT](./LICENSE-MIT) for `jqueryxss`,
+- [AGPL-3.0](./LICENSE-AGPL-3.0) for `JSjQueryXssUnsafeBear.py`, because it is a plugin for [Coala](https://github.com/coala/coala) which [is available under AGPL-3.0](https://github.com/coala/coala/blob/master/LICENSE).
+
 ## Links
 
 - OWASP Foundation. *Cheat Sheet Series: DOM based XSS Prevention Cheat Sheet*. 2020.
