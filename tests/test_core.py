@@ -41,6 +41,14 @@ class Test_analyse(TestCase):
         self.assert_detection("$(\n'\\\nh1\\\n'\n)\n.\nhtml\n(\nxss\n)")
 
     def test_unsafe_basic(self):
+        # https://api.jquery.com/replaceWith
+        self.assert_detection('$("#foo")["replaceWith"](xss)')
+        self.assert_detection('$("#foo").replaceWith(xss)')
+
+        # https://api.jquery.com/add
+        self.assert_detection('$("#foo")["add"](xss)')
+        self.assert_detection('$("#foo").add(xss)')
+
         # https://api.jquery.com/html/#html2
         self.assert_detection('$("#foo")["html"](xss)')
         self.assert_detection('$("#foo").html(xss)')
@@ -88,6 +96,11 @@ class Test_analyse(TestCase):
         # https://api.jquery.com/wrapAll/
         self.assert_detection('$("#foo")["wrapAll"](xss)')
         self.assert_detection('$("#foo").wrapAll(xss)')
+
+    def test_unsafe_reversed(self):
+        # https://api.jquery.com/replaceAll/
+        self.assert_detection('$(xss)["replaceAll"]("#foo");')
+        self.assert_detection('$(xss).replaceAll("#foo");')
 
     def test_multiple_lines(self):
         detections = analyse('\nvar a = 1;\n$("#foo").html(xss)\nvar b=2;$("#foo").html(xss)')

@@ -55,9 +55,23 @@ def analyse(source_code: str) -> Dict[Position, Detection]:
 
     :raises InvalidInput: on syntax error in provided JavaScript source code
     """
-    unsafe_methods = ['html', 'prepend', 'prependTo', 'append', 'appendTo',
-                      'before', 'after', 'insertBefore', 'insertAfter',
-                      'wrap', 'wrapInner', 'wrapAll']
+    unsafe_methods = [
+        'add',
+        'after',
+        'append',
+        'appendTo',
+        'before',
+        'html',
+        'insertAfter',
+        'insertBefore',
+        'prepend',
+        'prependTo',
+        'replaceAll',
+        'replaceWith',
+        'wrap',
+        'wrapAll',
+        'wrapInner',
+    ]
     detections: Dict[Tuple[int, int], Detection] = {}
     parser = Parser()
     try:
