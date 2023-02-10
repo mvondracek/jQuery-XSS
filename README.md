@@ -101,20 +101,38 @@ we created [our dataset of unsafe jQuery method calls](/dataset).
 
 ## Publication
 
-This software was developed during research on ***TBA***.
-Please see the paper for more details.
+This software was developed during research on
+[Rise of the Metaverse's Immersive Virtual Reality Malware and the Man-in-the-Room Attack & Defenses](https://www.sciencedirect.com/science/article/pii/S0167404822003157).
+Please see the paper for more details and use following citation.
+
+~~~BibTeX
+@article{Vondracek-2023-102923,
+    title = {Rise of the Metaverse’s Immersive Virtual Reality Malware and the Man-in-the-Room Attack & Defenses},
+    journal = {Computers \& Security},
+    volume = {127},
+    pages = {102923},
+    year = {2023},
+    issn = {0167-4048},
+    doi = {https://doi.org/10.1016/j.cose.2022.102923},
+    url = {https://www.sciencedirect.com/science/article/pii/S0167404822003157},
+    author = {Martin Vondráček and Ibrahim Baggili and Peter Casey and Mehdi Mekni}
+}
+~~~
 
 ## Links
 
-* OWASP Foundation. *Cheat Sheet Series: DOM based XSS Prevention Cheat Sheet*. 2020.
+- OWASP Foundation. *Cheat Sheet Series: DOM based XSS Prevention Cheat Sheet*. 2020.
   Online. https://cheatsheetseries.owasp.org/cheatsheets/DOM_based_XSS_Prevention_Cheat_Sheet.html
-
-* OWASP Foundation. *DOM Based XSS*. 2020. Online.
+- OWASP Foundation. *DOM Based XSS*. 2020. Online.
   https://owasp.org/www-community/attacks/DOM_Based_XSS
-
-* Röthlisberger, Thomas. *Risks of DOM Based XSS due to “unsafe” JavaScript
+- Thomas Röthlisberger. *Risks of DOM Based XSS due to “unsafe” JavaScript
   functions*. 2013. Online. https://blog.compass-security.com/2013/01/dom-based-xss-unsafe-javascript-functions/
-
-* Yuen Ho Wong, Jimmy. *Safe vs Unsafe jQuery Methods*. 2019. Online.
+- Jimmy Yuen Ho Wong. *Safe vs Unsafe jQuery Methods*. 2019. Online.
   https://coderwall.com/p/h5lqla/safe-vs-unsafe-jquery-methods 
- 
+- [UNHcFREG, *BigScreen and Unity Virtual Reality Attacks and the Man in The Room Attack*](https://www.unhcfreg.com/single-post/2019/02/19/bigscreen-and-unity-virtual-reality-attacks)
+- [University of New Haven, *University of New Haven Researchers Discover Critical Vulnerabilities in Popular Virtual Reality Application*](https://www.newhaven.edu/news/releases/2019/discover-vulnerabilities-virtual-reality-app.php)
+- Martin Vondráček, Ibrahim Baggili, Peter Casey, and Mehdi Mekni.
+  *Rise of the Metaverse's Immersive Virtual Reality Malware and
+  the Man-in-the-Room Attack & Defenses*. Computers \& Security.
+  vol. 127. p. 102923. 2023. Online.
+  https://www.sciencedirect.com/science/article/pii/S0167404822003157
