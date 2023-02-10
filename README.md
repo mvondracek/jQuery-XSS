@@ -1,7 +1,7 @@
 # jQuery XSS Static Analyser
 
 [![Python version](https://img.shields.io/badge/Python-3-blue.svg?style=flat-square)](https://www.python.org/)
-![Python package](https://github.com/mvondracek/jQuery-XSS/workflows/Python%20package/badge.svg)
+[![Python application](https://github.com/mvondracek/jQuery-XSS/actions/workflows/python-app.yml/badge.svg)](https://github.com/mvondracek/jQuery-XSS/actions/workflows/python-app.yml)
 
 Static analyser for JavaScript which can detect use of unsafe jQuery methods
 which are vulnerable to XSS attack.
