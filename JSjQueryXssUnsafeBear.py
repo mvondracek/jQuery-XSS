@@ -1,3 +1,8 @@
+"""
+This file is available under GNU Affero General Public License v3.0
+because it is a plugin for Coala which is available under AGPL-3.0.
+https://github.com/coala/coala/blob/master/LICENSE.
+"""
 from coalib.bears.LocalBear import LocalBear
 from coalib.results.Result import Result
 from coalib.results.SourceRange import SourceRange
