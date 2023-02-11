@@ -141,3 +141,4 @@ Please see the paper for more details and use following citation.
   the Man-in-the-Room Attack & Defenses*. Computers \& Security.
   vol. 127. p. 102923. 2023. Online.
   https://www.sciencedirect.com/science/article/pii/S0167404822003157
+- [eslint-plugin-jquery-unsafe: ESLint plugin to disallow jQuery functions with XSS potential](https://github.com/mvondracek/eslint-plugin-jquery-unsafe)
